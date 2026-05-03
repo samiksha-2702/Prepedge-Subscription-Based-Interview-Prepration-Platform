@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PrepEdge - Expert Talks (Smart Refactor UI)</title>
+<title>PrepEdge - Expert Talks | Learn from Industry Leaders</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
 :root{
@@ -15,92 +16,175 @@
   --stroke:rgba(255,255,255,0.12);
   --text:#e2e8f0;
   --muted:#94a3b8;
-  --accent:#38bdf8;
-  --accent2:#6366f1;
+  --accent:#3b82f6;
+  --accent2:#60a5fa;
+  --accent-glow:rgba(59,130,246,0.3);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter', -apple-system, sans-serif;}
 body{
-  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+  background: radial-gradient(ellipse at 20% 30%, var(--bg2), var(--bg1));
   color:var(--text);
+  min-height: 100vh;
 }
 
 /* NAV */
 nav{
   display:flex;
   justify-content:center;
-  gap:25px;
-  padding:15px;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
   position:sticky;
   top:0;
-  background:rgba(2,6,23,0.85);
-  backdrop-filter: blur(10px);
+  background:rgba(2,6,23,0.9);
+  backdrop-filter: blur(12px);
   border-bottom:1px solid var(--stroke);
   z-index:1000;
+  flex-wrap: wrap;
 }
-nav a{color:var(--muted);text-decoration:none;font-weight:500;transition:0.3s;}
-nav a:hover{color:var(--accent);}
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+  font-size:0.95rem;
+}
+nav a:hover{
+  color:var(--accent);
+}
+nav a i{
+  margin-right: 6px;
+}
 
 /* HEADER */
 header{
   text-align:center;
-  padding:60px 20px 30px;
+  padding: 3rem 1.5rem 2rem;
 }
 header h1{
-  font-size:3rem;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  font-size: 2.8rem;
+  font-weight:800;
+  background:linear-gradient(135deg, #ffffff, var(--accent2), var(--accent));
   -webkit-background-clip:text;
+  background-clip: text;
   color:transparent;
+  letter-spacing: -0.02em;
 }
-header p{color:var(--muted);margin-top:10px;}
+header h1 i{
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--accent);
+}
+header p{
+  color:var(--muted);
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
 
-.container{max-width:1200px;margin:auto;padding:20px;}
+.container{
+  max-width:1280px;
+  margin:auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
 
 h2{
-  margin:40px 0 20px;
-  color:var(--accent);
-  position:relative;
+  margin: 2.5rem 0 1.2rem;
+  font-size: 1.8rem;
+  font-weight:600;
+  color:var(--accent2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
 }
-h2::after{
-  content:'';
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  width:60px;
-  height:3px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
+h2 i{
+  font-size: 1.5rem;
+  color: var(--accent);
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap: 1.5rem;
 }
 
+/* CARDS */
 .card{
-  background:var(--card);
+  background: rgba(17,24,39,0.7);
+  backdrop-filter: blur(4px);
   border:1px solid var(--stroke);
-  border-radius:16px;
-  padding:15px;
+  border-radius:1.2rem;
+  padding: 1.2rem;
   cursor:pointer;
-  transition:0.4s;
+  transition:0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   overflow:hidden;
+  position: relative;
 }
-.card:hover{transform:translateY(-8px);}
-.card img{width:100%;border-radius:12px;margin-bottom:10px;transition:0.3s;}
-.card:hover img{transform:scale(1.05);}
-.card h3{margin:5px 0;}
-.card p{color:var(--muted);font-size:0.9rem;}
-
-button{
-  margin-top:10px;
-  padding:10px 14px;
+.card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+.card:hover::before{
+  transform: translateX(0);
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color: rgba(59,130,246,0.5);
+  box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4);
+}
+.card img{
+  width:100%;
+  border-radius:0.8rem;
+  margin-bottom:0.8rem;
+  transition:0.3s;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.card:hover img{
+  transform:scale(1.02);
+}
+.card h3{
+  font-size: 1.1rem;
+  font-weight:600;
+  margin: 0.5rem 0 0.3rem;
+}
+.card p{
+  color:var(--muted);
+  font-size:0.8rem;
+  margin-bottom: 0.8rem;
+}
+.card button{
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
   border:none;
-  border-radius:10px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
   color:white;
   cursor:pointer;
   font-weight:600;
+  font-size:0.8rem;
+  transition:0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.card button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+}
+
+/* Section spacing */
+section:first-of-type h2{
+  margin-top: 0;
 }
 
 /* MODAL */
@@ -108,155 +192,230 @@ button{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.9);
+  backdrop-filter: blur(8px);
   justify-content:center;
   align-items:center;
   z-index:2000;
 }
 .modal-content{
   width:90%;
-  max-width:900px;
+  max-width:1000px;
   background:#0b1220;
-  border-radius:16px;
-  padding:15px;
+  border-radius:1.2rem;
+  padding:0.5rem;
   position:relative;
+  border: 1px solid rgba(59,130,246,0.3);
+  box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5);
 }
-iframe{width:100%;height:500px;border-radius:12px;}
-.close{position:absolute;right:15px;top:10px;font-size:28px;cursor:pointer;color:var(--accent);}
+iframe{
+  width:100%;
+  height:500px;
+  border-radius:0.8rem;
+}
+.close{
+  position:absolute;
+  right:15px;
+  top:-40px;
+  font-size:2rem;
+  cursor:pointer;
+  color:var(--accent);
+  transition:0.2s;
+  background: none;
+  width: auto;
+}
+.close:hover{
+  color: white;
+  transform: scale(1.1);
+}
 
-footer{text-align:center;padding:25px;color:var(--muted);border-top:1px solid var(--stroke);margin-top:50px;}
+/* Footer */
+footer{
+  text-align:center;
+  padding:1.5rem;
+  margin-top:2rem;
+  background:rgba(2,6,23,0.8);
+  border-top:1px solid var(--stroke);
+  font-size:0.85rem;
+  color:var(--muted);
+}
+footer i{
+  margin-right: 6px;
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  header h1{
+    font-size: 1.8rem;
+  }
+  h2{
+    font-size: 1.4rem;
+  }
+  .grid{
+    gap: 1rem;
+  }
+  .modal-content{
+    width: 95%;
+  }
+  iframe{
+    height: 300px;
+  }
+  nav{
+    gap: 1rem;
+  }
+  nav a{
+    font-size: 0.8rem;
+  }
+  .close{
+    top: -35px;
+    right: 10px;
+    font-size: 1.8rem;
+  }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#talks">Talks</a>
-  <a href="#live">Live</a>
-  <a href="#recorded">Recorded</a>
-  <a href="#blogs">Blogs</a>
+  <a href="#talks"><i class="fas fa-video"></i> Talks</a>
+  <a href="#live"><i class="fas fa-broadcast-tower"></i> Live</a>
+  <a href="#recorded"><i class="fas fa-play-circle"></i> Recorded</a>
+  <a href="#blogs"><i class="fas fa-blog"></i> Blogs</a>
 </nav>
 
 <header>
-  <h1>PrepEdge Expert Talks</h1>
-  <p>Learn from Industry Experts 🚀</p>
+  <h1><i class="fas fa-chalkboard-user"></i> PrepEdge Expert Talks</h1>
+  <p>Learn from Industry Leaders · Master your skills · Stay ahead 🚀</p>
 </header>
 
 <div class="container">
 
-<!-- TALKS -->
+<!-- TALKS SECTION -->
 <section id="talks">
-<h2>Talks Library</h2>
+<h2><i class="fas fa-video"></i> Talks Library</h2>
 <div class="grid">
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/e2_ftgGLTss')">
-<img src="https://img.youtube.com/vi/e2_ftgGLTss/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/e2_ftgGLTss/hqdefault.jpg" alt="AI in Modern Industry">
 <h3>AI in Modern Industry</h3>
-<button onclick="openModal('https://www.youtube.com/embed/e2_ftgGLTss'); event.stopPropagation();">Watch</button>
+<p>Explore how AI is transforming industries worldwide</p>
+<button onclick="openModal('https://www.youtube.com/embed/e2_ftgGLTss'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/MJmI2EkH7xw')">
-<img src="https://img.youtube.com/vi/MJmI2EkH7xw/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/MJmI2EkH7xw/hqdefault.jpg" alt="Web Development Trends 2026">
 <h3>Web Development Trends 2026</h3>
-<button onclick="openModal('https://www.youtube.com/embed/MJmI2EkH7xw'); event.stopPropagation();">Watch</button>
+<p>Stay updated with latest frontend & backend technologies</p>
+<button onclick="openModal('https://www.youtube.com/embed/MJmI2EkH7xw'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/jtn-hRJjl68')">
-<img src="https://img.youtube.com/vi/jtn-hRJjl68/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/jtn-hRJjl68/hqdefault.jpg" alt="Data Science Fundamentals">
 <h3>Data Science Fundamentals</h3>
-<button onclick="openModal('https://www.youtube.com/embed/jtn-hRJjl68'); event.stopPropagation();">Watch</button>
+<p>Learn core concepts of data science and analytics</p>
+<button onclick="openModal('https://www.youtube.com/embed/jtn-hRJjl68'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 </div>
 </section>
 
-<!-- LIVE -->
+<!-- LIVE SESSIONS -->
 <section id="live">
-<h2>Live Sessions</h2>
+<h2><i class="fas fa-broadcast-tower"></i> Live Sessions</h2>
 <div class="grid">
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/RWgW-CgdIk0')">
-<img src="https://img.youtube.com/vi/RWgW-CgdIk0/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/RWgW-CgdIk0/hqdefault.jpg" alt="Cloud Computing Explained">
 <h3>Cloud Computing Explained</h3>
-<p>Basics & Concepts</p>
-<button onclick="openModal('https://www.youtube.com/embed/RWgW-CgdIk0'); event.stopPropagation();">Watch</button>
+<p>Basics & core concepts of AWS, Azure, GCP</p>
+<button onclick="openModal('https://www.youtube.com/embed/RWgW-CgdIk0'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/sMFh9QYFh2I')">
-<img src="https://img.youtube.com/vi/sMFh9QYFh2I/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/sMFh9QYFh2I/hqdefault.jpg" alt="Soft Skills: Teamwork">
 <h3>Soft Skills: Teamwork</h3>
 <p>Improve collaboration & interpersonal skills</p>
-<button onclick="openModal('https://www.youtube.com/embed/sMFh9QYFh2I'); event.stopPropagation();">Watch</button>
+<button onclick="openModal('https://www.youtube.com/embed/sMFh9QYFh2I'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/sF014G2BUXM')">
-<img src="https://img.youtube.com/vi/sF014G2BUXM/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/sF014G2BUXM/hqdefault.jpg" alt="Cloud Security Basics">
 <h3>Cloud Security Basics</h3>
 <p>Understand cloud safety & best practices</p>
-<button onclick="openModal('https://www.youtube.com/embed/sF014G2BUXM'); event.stopPropagation();">Watch</button>
+<button onclick="openModal('https://www.youtube.com/embed/sF014G2BUXM'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 </div>
 </section>
 
-<!-- RECORDED -->
+<!-- RECORDED SESSIONS -->
 <section id="recorded">
-<h2>Recorded Sessions</h2>
+<h2><i class="fas fa-play-circle"></i> Recorded Sessions</h2>
 <div class="grid">
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/ZE_YEn-okfk')">
-<img src="https://img.youtube.com/vi/ZE_YEn-okfk/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/ZE_YEn-okfk/hqdefault.jpg" alt="AI Coding Mock Interview">
 <h3>AI Coding Mock Interview</h3>
-<button onclick="openModal('https://www.youtube.com/embed/ZE_YEn-okfk'); event.stopPropagation();">Watch</button>
+<p>Practice coding interview with AI feedback</p>
+<button onclick="openModal('https://www.youtube.com/embed/ZE_YEn-okfk'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/l5g38haVsJk')">
-<img src="https://img.youtube.com/vi/l5g38haVsJk/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/l5g38haVsJk/hqdefault.jpg" alt="Full Stack Interview Questions 2025">
 <h3>Full Stack Interview Questions 2025</h3>
-<button onclick="openModal('https://www.youtube.com/embed/l5g38haVsJk'); event.stopPropagation();">Watch</button>
+<p>Most asked questions for full stack roles</p>
+<button onclick="openModal('https://www.youtube.com/embed/l5g38haVsJk'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/LzMnsfqjzkA')">
-<img src="https://img.youtube.com/vi/LzMnsfqjzkA/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/LzMnsfqjzkA/hqdefault.jpg" alt="Full Stack Development Tutorial">
 <h3>Full Stack Development Tutorial</h3>
-<button onclick="openModal('https://www.youtube.com/embed/LzMnsfqjzkA'); event.stopPropagation();">Watch</button>
+<p>Complete guide to becoming a full stack developer</p>
+<button onclick="openModal('https://www.youtube.com/embed/LzMnsfqjzkA'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 <div class="card" onclick="openModal('https://www.youtube.com/embed/8GK8R77Bd7g')">
-<img src="https://img.youtube.com/vi/8GK8R77Bd7g/hqdefault.jpg">
+<img src="https://img.youtube.com/vi/8GK8R77Bd7g/hqdefault.jpg" alt="AI Mock Interview App Tutorial">
 <h3>AI Mock Interview App Tutorial</h3>
-<button onclick="openModal('https://www.youtube.com/embed/8GK8R77Bd7g'); event.stopPropagation();">Watch</button>
+<p>Build an AI-powered mock interview application</p>
+<button onclick="openModal('https://www.youtube.com/embed/8GK8R77Bd7g'); event.stopPropagation();"><i class="fas fa-play"></i> Watch</button>
 </div>
 
 </div>
 </section>
 
-<!-- BLOGS -->
+<!-- BLOGS SECTION -->
 <section id="blogs">
-<h2>Expert Blogs</h2>
+<h2><i class="fas fa-blog"></i> Expert Blogs</h2>
 <div class="grid">
 
 <div class="card" onclick="window.open('https://medium.com/@eemseo25/mastering-communication-skills-in-2026-a-complete-guide-to-personal-and-professional-success-80175a4fd75f','_blank')">
+<i class="fas fa-comments" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--accent2);"></i>
 <h3>Mastering Communication Skills</h3>
-<p>Improve workplace communication</p>
-<button>Read</button>
+<p>Improve workplace communication and professional presence</p>
+<button><i class="fas fa-book-open"></i> Read Article</button>
 </div>
 
 <div class="card" onclick="window.open('https://prepinsta.com/learn-aptitude/','_blank')">
+<i class="fas fa-calculator" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--accent2);"></i>
 <h3>Aptitude Practice & Tricks</h3>
-<p>Quantitative aptitude & reasoning</p>
-<button>Read</button>
+<p>Quantitative aptitude & reasoning for placement exams</p>
+<button><i class="fas fa-book-open"></i> Read Article</button>
 </div>
 
 <div class="card" onclick="window.open('https://interviewfocus.com/blog/','_blank')">
+<i class="fas fa-handshake" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--accent2);"></i>
 <h3>Interview Preparation Tips</h3>
-<p>Crack interviews confidently</p>
-<button>Read</button>
+<p>Crack interviews confidently with proven strategies</p>
+<button><i class="fas fa-book-open"></i> Read Article</button>
 </div>
 
 <div class="card" onclick="window.open('https://bloggingjoy.com/best-programming-blogs/','_blank')">
+<i class="fas fa-code" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--accent2);"></i>
 <h3>Top Programming Blogs</h3>
-<p>Coding tutorials & tech updates</p>
-<button>Read</button>
+<p>Coding tutorials, tech updates & learning resources</p>
+<button><i class="fas fa-book-open"></i> Read Article</button>
 </div>
 
 </div>
@@ -273,22 +432,41 @@ footer{text-align:center;padding:25px;color:var(--muted);border-top:1px solid va
 </div>
 
 <footer>
-© 2026 PrepEdge | Smart Refactored UI
+  <i class="fas fa-graduation-cap"></i> PrepEdge - Interview Preparation Platform | Expert Talks
 </footer>
 
 <script>
 function openModal(url){
-  document.getElementById('modal').style.display='flex';
-  document.getElementById('video').src=url+'?autoplay=1';
+  const modal = document.getElementById('modal');
+  const video = document.getElementById('video');
+  modal.style.display = 'flex';
+  video.src = url + '?autoplay=1&rel=0';
+  document.body.style.overflow = 'hidden';
 }
 function closeModal(){
-  document.getElementById('modal').style.display='none';
-  document.getElementById('video').src='';
+  const modal = document.getElementById('modal');
+  const video = document.getElementById('video');
+  modal.style.display = 'none';
+  video.src = '';
+  document.body.style.overflow = '';
 }
-window.onclick=function(e){
-  if(e.target.id==='modal') closeModal();
+window.onclick = function(e){
+  if(e.target.id === 'modal'){
+    closeModal();
+  }
 }
+// Smooth scrolling for nav links
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if(targetElement){
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
 </script>
 
-</body>
+</body>  
 </html>
