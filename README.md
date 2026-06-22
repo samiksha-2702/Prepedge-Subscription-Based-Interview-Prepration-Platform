@@ -144,17 +144,17 @@ Administrators can manage the entire platform from a single dashboard:
 |---------------|---------------------|
 | ![Communication](screenshots/communication.png) | ![Company](screenshots/company.png) |
 
-### AI Features
-
-| AI Interview Coach | Recommendations |
-|--------------------|----------------|
-| ![Coach](screenshots/coach.png) | ![Recommendations](screenshots/recommendations.png) |
-
 ### Subscription
 
 | Plans | Payment |
 |-------|---------|
 | ![Subscription](screenshots/subscription.png) | ![Payment](screenshots/payment.png) |
+
+### AI Features
+
+| AI Interview Coach | Recommendations |
+|--------------------|----------------|
+| [Coach](screenshots/coach.png) | [Recommendations](screenshots/recommendations.png) |
 
 ---
 
