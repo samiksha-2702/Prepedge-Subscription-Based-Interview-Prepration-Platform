@@ -154,7 +154,7 @@ Administrators can manage the entire platform from a single dashboard:
 
 | AI Interview Coach | Recommendations |
 |--------------------|----------------|
-| [Coach](screenshots/coach.png) | [Recommendations](screenshots/recommendations.png) |
+| ! [Coach](screenshots/coach.png) | !  |[Recommendations](screenshots/recommendations.png) |
 
 ---
 
